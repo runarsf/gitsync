@@ -5,4 +5,8 @@ See exmple use in `docker-compose.yml`
 2. Add the public key to the deploy keys for your project
 
 # Build image, but start after package installation to save time
+# You can set BREAK_CACHE to anything, see next example for an example using random string
 docker-compose build --build-arg BREAK_CACHE=yes
+
+# Rebuild and restart entire image excapt package installation
+docker-compose down && docker-compose build --build-arg BREAK_CACHE="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c10)" && docker-compose up -d --force-recreate
