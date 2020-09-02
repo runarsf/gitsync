@@ -12,6 +12,7 @@ services:
         GIT_BRANCH: "${GIT_BRANCH:-master}"
         GIT_EMAIL: "${GIT_EMAIL:?}"
         GIT_NAME: "${GIT_NAME:?}"
+        BREAK_CACHE: "no"
     hostname: gitsync
     container_name: gitsync
     restart: "no"

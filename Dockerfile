@@ -21,7 +21,7 @@ RUN apt-get update \
  && apt-get clean
 
 # Change BREAK_CACHE to skip installation of packages
-ARG BREAK_CACHE=unknown
+ARG BREAK_CACHE=no
 
 # RUN chmod 0744 /etc/cron.d/crontab (cron fails silently if you forget)
 # Could write directly to file instead of copy, would remove the need for envsubst and gettext
