@@ -16,7 +16,6 @@ services:
     hostname: gitsync
     container_name: gitsync
     restart: "no"
-    env_file: cron.env
     volumes:
       - "./:/root/repo:ro"
       - "./.git:/root/repo/.git"
