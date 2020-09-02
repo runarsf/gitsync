@@ -1,0 +1,6 @@
+ssl/*
+*.pem
+git-sync
+ssh/*
+id_rsa
+id_rsa.pub

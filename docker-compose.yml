@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  gitsync:
+    image: gitsync
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CRON: "${CRON:-*/10 * * * *}"
+    hostname: gitsync
+    container_name: gitsync
+    restart: "no"
+    #volumes:
+    #  - "./:/root/repo:ro"
+    #  - "./.git:/root/repo/.git"
+    environment:
+      GIT_HOST: "${GIT_HOST:-github.com}"
+      GIT_EMAIL: "${GIT_EMAIL:?}"
+      GIT_NAME: "${GIT_NAME:?}"
+    command: 'tail -f /dev/null'
