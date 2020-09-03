@@ -10,11 +10,10 @@ services:
     volumes:
       - "./:/root/repo:ro"
       - "./.git:/root/repo/.git"
-      - "./ssh/:/root/.ssh/"
+      - "./ssh/id_rsa:/root/.ssh/id_rsa"
     environment:
       CRON: "${CRON:-*/10 * * * *}"
       GIT_HOST: "${GIT_HOST:-github.com}"
       GIT_BRANCH: "${GIT_BRANCH:-master}"
       GIT_EMAIL: "${GIT_EMAIL:?}"
       GIT_NAME: "${GIT_NAME:?}"
-      BREAK_CACHE: "no"
