@@ -1,12 +1,15 @@
-See exmple use in `docker-compose.yml`
+# gitsync
+
+Automatically sync a git repository using docker.
+
+## Getting started
+See exmple use in `docker-compose.yml`, replace `image` with newest version in [runarsf/gitsync/packages](https://github.com/runarsf/gitsync/packages), and remove `build`.
+You can modify environment variables in the `.env` file or directly in `docker-compose.yml`.
+NB! Remember to properly configure `.gitignore`, git-sync will automatically push *all* changes.
 
 1. Generate ssh keys (no passphrase), or use already existing ssh keys.
-  ssh-keygen -t rsa -b 4096 -o -a 100 -f ./ssh/id_rsa -q -N "" -C "gitsync"
-2. Add the public key to the deploy keys for your project
+  `ssh-keygen -t rsa -b 4096 -o -a 100 -f ./id_rsa -q -N "" -C "gitsync"`
+2. Add the public key (`id_rsa.pub`) to the deploy keys for your project, remember to allow write access.
 
-# Build image, but start after package installation to save time
-# You can set BREAK_CACHE to anything, see next example for an example using random string
-docker-compose build --build-arg BREAK_CACHE=yes
-
-# Rebuild and restart entire image excapt package installation
-docker-compose down && docker-compose build --build-arg BREAK_CACHE="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c10)" && docker-compose up -d --force-recreate
+### TODO:
+ - [ ] Add support for password protected ssh keys
