@@ -3,19 +3,18 @@ version: "3"
 services:
   gitsync:
     image: gitsync
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        CRON: "${CRON:-*/10 * * * *}"
-        GIT_HOST: "${GIT_HOST:-github.com}"
-        GIT_BRANCH: "${GIT_BRANCH:-master}"
-        GIT_EMAIL: "${GIT_EMAIL:?}"
-        GIT_NAME: "${GIT_NAME:?}"
-        BREAK_CACHE: "no"
+    build: .
     hostname: gitsync
     container_name: gitsync
     restart: "no"
     volumes:
       - "./:/root/repo:ro"
       - "./.git:/root/repo/.git"
+      - "./ssh/:/root/.ssh/"
+    environment:
+      CRON: "${CRON:-*/10 * * * *}"
+      GIT_HOST: "${GIT_HOST:-github.com}"
+      GIT_BRANCH: "${GIT_BRANCH:-master}"
+      GIT_EMAIL: "${GIT_EMAIL:?}"
+      GIT_NAME: "${GIT_NAME:?}"
+      BREAK_CACHE: "no"
