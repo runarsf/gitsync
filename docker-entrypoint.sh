@@ -12,9 +12,10 @@ printf "Git name: ${GIT_NAME}\n"
 printf "Git email: ${GIT_EMAIL}\n"
 printf "Git branch: ${GIT_BRANCH}\n"
 
-# Test if git host is reachable
+# Test if git host is reachable before running git-sync
 printf "${CRON} wget --spider --quiet https://${GIT_HOST} && (cd /root/repo && /root/git-sync/git-sync >> /var/log/cron.log 2>&1)\n# An empty line is required at the end of this file for a valid cron file.\n" \
   > /etc/cron.d/crontab
+# Run git-sync without testing connection
 #printf "${CRON} cd /root/repo && /root/git-sync/git-sync >> /var/log/cron.log 2>&1\n# An empty line is required at the end of this file for a valid cron file.\n" \
 #  > /etc/cron.d/crontab
 
