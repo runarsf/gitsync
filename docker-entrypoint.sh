@@ -12,8 +12,11 @@ printf "Git name: ${GIT_NAME}\n"
 printf "Git email: ${GIT_EMAIL}\n"
 printf "Git branch: ${GIT_BRANCH}\n"
 
-printf "${CRON} cd /root/repo && /root/git-sync/git-sync >> /var/log/cron.log 2>&1\n# An empty line is required at the end of this file for a valid cron file.\n" \
+# Test if git host is reachable
+printf "${CRON} wget --spider --quiet https://${GIT_HOST} && (cd /root/repo && /root/git-sync/git-sync >> /var/log/cron.log 2>&1)\n# An empty line is required at the end of this file for a valid cron file.\n" \
   > /etc/cron.d/crontab
+#printf "${CRON} cd /root/repo && /root/git-sync/git-sync >> /var/log/cron.log 2>&1\n# An empty line is required at the end of this file for a valid cron file.\n" \
+#  > /etc/cron.d/crontab
 
 crontab /etc/cron.d/crontab
 
