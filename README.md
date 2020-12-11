@@ -4,7 +4,7 @@ Automatically sync a git repository using docker.
 
 ## Getting started
 See exmple use in [docker-compose.yml](./docker-compose.yml), replace `image` with newest version in [runarsf/gitsync/packages](https://github.com/runarsf/gitsync/packages) (`docker.pkg.github.com/runarsf/gitsync/gitsync:1.0.2`), and remove `build`.\
-You can modify environment variables in the `.env` file or directly in `docker-compose.yml`.\
+Required environment variables are `GIT_NAME` and `GIT_EMAIL`, either set these in `.env` or directly in `docker-compose.yml`.\
 NB! Remember to properly configure `.gitignore`, git-sync will automatically push *all* changes, so ignoring your ssh-key could be a good idea.
 
 1. Generate ssh keys (no passphrase), or use already existing ssh keys.\
