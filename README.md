@@ -29,6 +29,15 @@ Reading materials for Docker and docker-compose file permissions:
 - [Docker compose volume Permissions linux](https://stackoverflow.com/a/52952309/6914274)
 - [Add a volume to Docker, but exclude a sub-folder](https://stackoverflow.com/a/37898591/6914274)
 
+### You can manually sync using this command
+
+```bash
+docker-compose \
+  --project-directory ./repo \
+  --file ./repo/docker-compose.yml \
+  exec -u root gitsync bash -c 'wget --spider --quiet https://${GIT_HOST} && (cd /root/repo && /root/git-sync/git-sync)'
+```
+
 ### TODO:
 
 - [ ] Add support for password protected ssh keys
