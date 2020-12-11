@@ -2,17 +2,16 @@ version: "3"
 
 services:
   gitsync:
-    image: gitsync
-    build: .
+    image: gitsync # docker.pkg.github.com/runarsf/gitsync/gitsync:1.0.2
+    build: .       # Remove if running prebuilt image.
     hostname: gitsync
     container_name: gitsync
     restart: "no"
     volumes:
-      - "./:/root/repo:ro"
-      - "./.git:/root/repo/.git"
+      - "./:/root/repo"
       - "./id_rsa:/root/.ssh/id_rsa"
     environment:
-      CRON: "${CRON:-*/10 * * * *}"
+      CRON: "${CRON:-*/10 * * * *}" # How often gitsync should run. Default: 10 minutes.
       GIT_HOST: "${GIT_HOST:-github.com}"
       GIT_BRANCH: "${GIT_BRANCH:-master}"
       GIT_EMAIL: "${GIT_EMAIL:?}"
