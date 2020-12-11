@@ -1,6 +1,6 @@
 # gitsync
 
-Automatically sync a git repository using docker.
+Automatically sync a git repository using Docker and [simonthum/git-sync](https://github.com/simonthum/git-sync).
 
 ## Getting started
 See exmple use in [docker-compose.yml](./docker-compose.yml), replace `image` with newest version in [runarsf/gitsync/packages](https://github.com/runarsf/gitsync/packages) (`docker.pkg.github.com/runarsf/gitsync/gitsync:1.0.2`), and remove `build`.\
@@ -41,4 +41,4 @@ docker-compose \
 ### TODO:
 
 - [ ] Add support for password protected ssh keys
-- [ ] Investigate file permissions
+- [x] Investigate file permissions
