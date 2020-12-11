@@ -28,6 +28,7 @@ Reading materials for Docker and docker-compose file permissions:
 - [docker-file-permissions](https://github.com/bahmutov/docker-file-permissions)
 - [Docker compose volume Permissions linux](https://stackoverflow.com/a/52952309/6914274)
 - [Add a volume to Docker, but exclude a sub-folder](https://stackoverflow.com/a/37898591/6914274)
+- [Working with docker bind mounts and node_modules](https://burnedikt.com/dockerized-node-development-and-mounting-node-volumes/)
 
 ### You can manually sync using this command
 
