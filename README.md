@@ -42,4 +42,5 @@ docker-compose \
 ### TODO:
 
 - [ ] Add support for password protected ssh keys
+- [ ] Document / add option for `git config --local status.showUntrackedFiles no` and `git config --local pull.rebase false`.
 - [x] Investigate file permissions
